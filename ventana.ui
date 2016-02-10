@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ventana</class>
+ <widget class="QMainWindow" name="ventana">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>787</width>
+    <height>508</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Pimg ( Procesador de Imágenes )</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/new/prefix1/images/PIMG.png</normaloff>:/new/prefix1/images/PIMG.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#gb_zoom, #gb_histograma, #gb_umbralizacion, #lb_img_area {
+	border: 1px solid black;
+	border-radius:3px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="gb_histograma">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>50</y>
+      <width>401</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Histograma</string>
+    </property>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>220</y>
+       <width>381</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCustomPlot" name="hist" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>381</width>
+       <height>211</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gb_umbralizacion">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>330</y>
+      <width>401</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Umbralizacion</string>
+    </property>
+    <widget class="QLabel" name="lb_valor_actual">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>60</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>- -</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_aplicar_umbral">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>60</y>
+       <width>191</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Aplicar umbral</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="qs_slider">
+     <property name="geometry">
+      <rect>
+       <x>35</x>
+       <y>30</y>
+       <width>341</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="tickPosition">
+      <enum>QSlider::TicksAbove</enum>
+     </property>
+     <property name="tickInterval">
+      <number>5</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QScrollArea" name="sa_imagen">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>351</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="widgetResizable">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>399</width>
+       <height>429</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>787</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Inicio</string>
+    </property>
+    <addaction name="mn_imagen_abrir"/>
+    <addaction name="mn_imagen_cerrar"/>
+    <addaction name="separator"/>
+    <addaction name="mn_guardar"/>
+    <addaction name="mn_guardarcomo"/>
+    <addaction name="separator"/>
+    <addaction name="mn_salir"/>
+   </widget>
+   <widget class="QMenu" name="menuImagen">
+    <property name="title">
+     <string>Imagen</string>
+    </property>
+    <widget class="QMenu" name="mn_zoom">
+     <property name="title">
+      <string>Zoom</string>
+     </property>
+     <addaction name="mn_aumento"/>
+     <addaction name="mn_disminucion"/>
+    </widget>
+    <addaction name="mn_ver_propiedades"/>
+    <addaction name="separator"/>
+    <addaction name="mn_restaurar_imagen"/>
+    <addaction name="separator"/>
+    <addaction name="mn_filtro"/>
+    <addaction name="separator"/>
+    <addaction name="mn_umbral"/>
+    <addaction name="mn_negativo"/>
+    <addaction name="mn_obtener_histograma"/>
+    <addaction name="mn_amp_contraste"/>
+    <addaction name="mn_eq_histograma"/>
+    <addaction name="separator"/>
+    <addaction name="mn_zoom"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuImagen"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="mn_imagen_abrir">
+   <property name="text">
+    <string>Abrir imagen</string>
+   </property>
+   <property name="toolTip">
+    <string>Haga click para abrir una imagen PAM o BMP</string>
+   </property>
+  </action>
+  <action name="mn_imagen_cerrar">
+   <property name="text">
+    <string>Cerrar imagen</string>
+   </property>
+   <property name="toolTip">
+    <string>Haga click para cerrar la imagen actual</string>
+   </property>
+  </action>
+  <action name="mn_salir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="toolTip">
+    <string>Haga click para salir de PImg</string>
+   </property>
+  </action>
+  <action name="mn_ver_propiedades">
+   <property name="text">
+    <string>Ver Propiedades</string>
+   </property>
+  </action>
+  <action name="mn_obtener_histograma">
+   <property name="text">
+    <string>Obtener Histograma</string>
+   </property>
+  </action>
+  <action name="mn_negativo">
+   <property name="text">
+    <string>Negativo</string>
+   </property>
+  </action>
+  <action name="mn_amp_contraste">
+   <property name="text">
+    <string>Estiramiento del Contraste</string>
+   </property>
+  </action>
+  <action name="mn_umbral">
+   <property name="text">
+    <string>Umbral</string>
+   </property>
+  </action>
+  <action name="mn_restaurar_imagen">
+   <property name="text">
+    <string>Restaurar imagen</string>
+   </property>
+  </action>
+  <action name="actionMantener_relacion_de_aspecto">
+   <property name="text">
+    <string>Mantener relacion de aspecto</string>
+   </property>
+  </action>
+  <action name="mn_disminucion">
+   <property name="text">
+    <string>Alejar</string>
+   </property>
+  </action>
+  <action name="mn_guardarcomo">
+   <property name="text">
+    <string>Guardar imagen como...</string>
+   </property>
+   <property name="toolTip">
+    <string>Haga click para guardar la imagen actual en un archivo distinto al original</string>
+   </property>
+  </action>
+  <action name="mn_guardar">
+   <property name="text">
+    <string>Guardar imagen</string>
+   </property>
+   <property name="toolTip">
+    <string>Haga click para guardar la imagen actual en su archivo original</string>
+   </property>
+  </action>
+  <action name="mn_aumento_vmp">
+   <property name="text">
+    <string>VMP</string>
+   </property>
+  </action>
+  <action name="mn_aumento_il">
+   <property name="text">
+    <string>Interpolacion Lineal</string>
+   </property>
+  </action>
+  <action name="mn_aumento">
+   <property name="text">
+    <string>Acercar</string>
+   </property>
+  </action>
+  <action name="mn_eq_histograma">
+   <property name="text">
+    <string>Ecualización del Histograma</string>
+   </property>
+  </action>
+  <action name="mn_filtro_media">
+   <property name="text">
+    <string>Media ( predeterminado )</string>
+   </property>
+   <property name="toolTip">
+    <string>Filtro 3x3 que suaviza la imagen ( Blur )</string>
+   </property>
+  </action>
+  <action name="mn_gradiente">
+   <property name="text">
+    <string>Gradiente</string>
+   </property>
+  </action>
+  <action name="mn_laplaciano">
+   <property name="text">
+    <string>Laplaciano</string>
+   </property>
+  </action>
+  <action name="mn_filtro_gaussiano">
+   <property name="text">
+    <string>Gaussiano 3x3</string>
+   </property>
+  </action>
+  <action name="mn_filtro">
+   <property name="text">
+    <string>Filtros ( avanzado )</string>
+   </property>
+  </action>
+  <action name="mn_realcebordes">
+   <property name="text">
+    <string>Realce de Bordes</string>
+   </property>
+  </action>
+  <action name="mn_laplaciano_reescalado">
+   <property name="text">
+    <string>Laplaciano Reescalado</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
